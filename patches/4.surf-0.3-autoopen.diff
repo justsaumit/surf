@@ -1,0 +1,12 @@
+diff -r dbb565b8d61c config.def.h
+--- a/config.def.h	Fri Jun 25 09:42:58 2010 +0200
++++ b/config.def.h	Mon Jul 05 22:07:35 2010 -0500
+@@ -14,7 +14,7 @@
+ 	p, q, winid, NULL } }
+ #define DOWNLOAD(d) { \
+ 	.v = (char *[]){ "/bin/sh", "-c", \
+-	"xterm -e \"wget --load-cookies ~/.surf/cookies.txt '$0';\"", \
++	"ofile=\"$(xdg-user-dir DOWNLOAD)/$(basename \"$0\")\"; wget --load-cookies ~/.surf/cookies.txt -O \"$ofile\" \"$0\"; xdg-open \"$ofile\"", \
+ 	d, NULL } }
+ #define MODKEY GDK_CONTROL_MASK
+ static Key keys[] = {
