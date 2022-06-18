@@ -64,6 +64,9 @@ install: all
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
 	sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
+	mkdir -p /home/saumit/.surf/styles/
+	echo "html, img, video { -webkit-filter: invert(95%) hue-rotate(180deg); }" > /home/saumit/.surf/styles/default.css
+	chown -R saumit:users /home/saumit/.surf/styles/default.css
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/surf
